@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            border:1px solid red;
+            display: inline-block;
+        }
+        .left {
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: yellow;
+        }
+        .right {
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: blue;
+        }
+        .wrap::after {
+            content: '';
+            display: block;
+            float: left;
+            /* overflow: hidden; */
+            /* clear: both; */
+        }
+        .bottom {
+            width: 200px;
+            height: 300px;
+            background-color: pink;
+        }
+        /* .clear {
+            clear: both;
+        } */
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+<!-- <div class="clear"></div> -->
+<div class="bottom"></div>
+</body>
+</html>

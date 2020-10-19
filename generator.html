@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gerenator</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function * fn() {
+    //     alert(0);
+
+    //     let a = yield;
+
+    //     alert(a);  // 3
+    // }
+    // let genObj = fn();
+    // genObj.next(1);
+    // genObj.next(3);
+
+    function* fn() {
+        alert(0);
+
+        yield 12;
+
+        alert(1);
+        return 100;
+    }
+    let genObj = fn();
+    let a1 = genObj.next();
+    console.log(a1);    // {value: 12, done: false}
+    let a2 = genObj.next();
+    console.log(a2);    // {value: 100, done: true}
+</script>
+</html>

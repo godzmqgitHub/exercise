@@ -1,0 +1,120 @@
+cb({
+    "status": 0,
+    "message": "query ok",
+    "request_id": "35d16afe-6261-11e8-9496-6c0b84ffcd2a",
+    "result": {
+        "location": {
+            "lat": 39.984154,
+            "lng": 116.307491
+        },
+        "address": "北京市海淀区北四环西路66号",
+        "formatted_addresses": {
+            "recommend": "海淀区中国技术交易大厦(左岸工社东)",
+            "rough": "海淀区中国技术交易大厦(左岸工社东)"
+        },
+        "address_component": {
+            "nation": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "district": "海淀区",
+            "street": "北四环西路",
+            "street_number": "北四环西路66号"
+        },
+        "ad_info": {
+            "nation_code": "156",
+            "adcode": "110108",
+            "city_code": "156110000",
+            "name": "中国,北京市,北京市,海淀区",
+            "location": {
+                "lat": 39.984154,
+                "lng": 116.307487
+            },
+            "nation": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "district": "海淀区"
+        },
+        "address_reference": {
+            "business_area": {
+                "id": "14178584199053362783",
+                "title": "中关村",
+                "location": {
+                    "lat": 39.984112,
+                    "lng": 116.307487
+                },
+                "_distance": 0,
+                "_dir_desc": "内"
+            },
+            "famous_area": {
+                "id": "14178584199053362783",
+                "title": "中关村",
+                "location": {
+                    "lat": 39.984112,
+                    "lng": 116.307487
+                },
+                "_distance": 0,
+                "_dir_desc": "内"
+            },
+            "crossroad": {
+                "id": "529981",
+                "title": "彩和坊路/北四环西路辅路(路口)",
+                "location": {
+                    "lat": 39.985001,
+                    "lng": 116.308113
+                },
+                "_distance": 102.8,
+                "_dir_desc": "西南"
+            },
+            "town": {
+                "id": "110108012",
+                "title": "海淀街道",
+                "location": {
+                    "lat": 39.984154,
+                    "lng": 116.307487
+                },
+                "_distance": 0,
+                "_dir_desc": "内"
+            },
+            "street_number": {
+                "id": "3629720141162880123",
+                "title": "北四环西路66号",
+                "location": {
+                    "lat": 39.984119,
+                    "lng": 116.307503
+                },
+                "_distance": 1.6,
+                "_dir_desc": ""
+            },
+            "street": {
+                "id": "9217092216709107946",
+                "title": "彩和坊路",
+                "location": {
+                    "lat": 39.984169,
+                    "lng": 116.308098
+                },
+                "_distance": 46.6,
+                "_dir_desc": "西"
+            },
+            "landmark_l1": {
+                "id": "6509878785278511162",
+                "title": "左岸工社",
+                "location": {
+                    "lat": 39.984112,
+                    "lng": 116.30439
+                },
+                "_distance": 176,
+                "_dir_desc": "东"
+            },
+            "landmark_l2": {
+                "id": "3629720141162880123",
+                "title": "中国技术交易大厦",
+                "location": {
+                    "lat": 39.984112,
+                    "lng": 116.307487
+                },
+                "_distance": 0,
+                "_dir_desc": "内"
+            }
+        }
+    }
+});

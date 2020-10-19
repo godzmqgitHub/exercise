@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div v-text="num"></div>
+        <div>{{name}}</div>
+        <div v-on:click="clickFn">click</div>
+        <!-- <input v-model="msg"> -->
+    </div>
+<script src="./vue2.js"></script>
+<script>
+    var vm = new MyVue({
+        el: "#app",
+        data: {
+            num: 1,
+            name: 'zhang'
+        },
+        methods: {
+            clickFn() {
+                console.log(this.num);
+            }
+        }
+    })
+    setInterval(() => {
+        vm.num++
+    }, 1000);
+    
+</script>
+</body>
+</html>

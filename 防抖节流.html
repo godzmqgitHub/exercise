@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" oncompositionstart>
+<script>
+    // // 防抖
+    // 相同点：是在一定时间内只触发一次
+    // 防抖：在一段时间之后触发事件  键盘事件
+    // 节流：先触发事件，在一段时间之内不能再次触发  接口请求、监听定位
+    // function debounce(fn, time = 500) {
+    //     let timeFn = null;
+    //     if (timeFn) {
+    //         clearTimeout(timeFn);
+    //     }
+    //     timeFn = setTimeout(() => {
+    //         fn && fn()
+    //     }, time);
+    // }
+
+
+
+    // // 扁平化数组
+    // var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+    // function flatten(arr) {
+
+    //     while (arr.some(item => Array.isArray(item))) {
+    //         console.log(arr);
+    //         arr = [].concat(...arr);
+    //     }
+
+    //     return arr;
+    // }
+    // a = Array.from(new Set(flatten(arr))).sort((a, b) => {
+    //     return a - b
+    // })
+
+
+    // // 对称数
+    // function symmetryNumber(len) {
+    //     let arr = [];
+    //     for (let index = 0; index < len; index++) {
+    //         index == index.toString().split('').reverse().join('') && index > 10 ? arr.push(index) : ''
+    //     }
+    //     return arr;
+    // }
+    // console.log(symmetryNumber(1000));\
+
+    // // 移动零
+    // function moveZero(arr) {
+    //     let len =  arr.length;
+    //     let j = 0;
+    //     if (!len) {
+    //         return;
+    //     }
+    //     for (let index = 0; index < len-j; index++) {
+    //         const element = arr[index];
+    //         if (element == 0) {
+    //             arr.push(0);
+    //             arr.splice(index, 1)
+    //             index--;
+    //             j++;
+    //         }
+    //     }
+    // }
+    // let arr = [1,0,2,3,0,0,4,0];
+    // moveZero(arr);
+    // console.log(arr);
+
+    // var let const
+    // const: 常量；var let：变量
+    // var 会产生变量提升；let、const：不会有变量提升，但是会产生一个暂时性死区
+    // 同时es6引入了块级作用域，例如if代码块内声明var则会出现在其父级作用域内，而let、const
+
+
+    // add 函数
+    // function add() {
+    //     let args = [...arguments];
+    //     let addFn = function() {
+    //         args.push(...arguments)
+    //         return addFn;
+    //     }
+    //     addFn.toString = function() {
+    //         console.log(1231223);
+    //         num = args.reduce((a,e) => {
+    //             return a + e;
+    //         })
+    //         return num
+    //     }
+    //     return addFn;
+    //     // var num = 0;
+
+    // }
+    // console.log(add(1)(2)()(12))
+
+    // 高阶函数
+    // const curryReducer = (fn) => {
+    //     return (...args) => {
+    //         let runned = false;
+    //         const chain = (...args) => {
+    //             if (!args.length) return chain;
+    //             chain.acc = (runned ? [chain.acc] : []).concat(args).reduce(fn);
+    //             !runned && (runned = true);
+    //             return chain;
+    //         };
+    //         chain.acc = undefined;
+    //         chain.toString = () => chain.acc;
+    //         return chain(...args);
+    //     };
+    // };
+    // add = curryReducer((a,e) => a+e)
+    // console.log(add(1))
+
+    // 两数之和
+    function getSum(arr, target) {
+        var sumArr = []
+        for (let index = 0; index < arr.length; index++) {
+            const element = arr[index];
+            let num = arr.indexOf(target - element);
+            if (num !== -1) {
+                return sumArr = [index, num]
+            }
+        }
+    }
+    arr = [1,2,3,4,5,6,7]
+    
+    console.log(getSum(arr, 9))
+    
+</script>
+</body>
+</html>

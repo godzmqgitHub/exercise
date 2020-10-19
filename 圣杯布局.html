@@ -1,0 +1,126 @@
+<!-- 1、float 浮动，通过浮动将元素全部放在一行，然后两边的margin占据对应的宽度 -->
+<!-- 2、flex 通过flex配置占据主轴剩余空间的固定宽度 -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width: 100%;
+        }
+        .wrap>div{
+            float: left;
+        }
+        .left {
+            width: 200px;
+            background: blue;
+            margin-left: -100%;
+        }
+        .right {
+            width: 200px;
+            background: blue;
+            margin-left: -200px;
+        }
+        .middle {
+            width: 100%;
+            background-color: red;
+        }
+        .center {
+            margin: 0 200px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="middle">
+        <div class="center">
+            center
+        </div>
+        
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            display: flex;
+            flex-direction: row;
+        }
+        .left,.right {
+            flex: 0 0 200px;
+            background-color: blue;
+        }
+        .middle{
+            width: 100%;
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left">left</div>
+    <div class="middle">
+       <div class="center">center</div>
+    </div>
+    <div class="right">right</div>
+</div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left">left</div>
+    <div class="middle">
+       <div class="center">center</div>
+    </div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

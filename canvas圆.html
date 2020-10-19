@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圆形canvas</title>
+    <style>
+        body {
+            background-color: #000;
+            text-align: center;
+        }
+    
+        #c1 {
+            background-color: #fff;
+        }
+        #c2 {
+            background-color: red;
+        }
+    </style>
+    <script>
+
+        // 非0环绕
+        
+        // window.onload = function() {
+        //     let oC = document.getElementById('c1'), oC2 = document.getElementById('c2');
+        //     let gd = oC.getContext('2d');
+        //     let cx = 400, cy = 300, r = 200;
+        //     gd.arc(cx, cy, r, 0, 2 * Math.PI, true);
+        //     gd.fillStyle = '#ccc';
+        //     gd.fill();
+        //     // 鼠标划过变色
+        //     // oC.onmousemove = function(ev) {
+        //     //     let x = ev.offsetX - cx;
+        //     //     let y = ev.offsetY - cy;
+                
+        //     //     // sqrt开根号
+        //     //     let dis = Math.sqrt(x*x + y*y);
+        //     //     console.log(dis);
+        //     //     gd.beginPath();
+        //     //     gd.arc(cx, cy, r, 0, 2 * Math.PI, true);
+        //     //     if (dis < r) {
+        //     //         gd.fillStyle = 'yellow';
+        //     //     } else {
+        //     //         gd.fillStyle = '#ccc';
+        //     //     }
+        //     //     gd.fill();
+        //     // }
+        // }
+
+        async function fn1() {
+            console.log('async1 start')
+            await fn2();
+            console.log('async1 end')
+        }
+
+        async function fn2() {
+            console.log('async2')
+        }
+
+        setTimeout(() => {
+            console.log('timeout')
+        }, 0)
+
+        fn1();
+
+        new Promise((resolve, reject) => {
+            console.log('promise start')
+            resolve();
+        }).then(
+            res => {
+                console.log('promise end')
+            }
+        );
+
+        console.log('script end');
+        // async1start   async2  promisestart scriptend async1end promiseend timeout  
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800" height="600"></canvas>
+    <canvas id="c2" width="600" height="400"></canvas>
+</body>
+</html>

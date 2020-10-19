@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不定宽div居中</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            height: 100%;
+        }
+        .content{
+            /* 假定div宽高不定 */
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+            border: 10px solid black;
+            background-color: red;
+            /* box-sizing: border-box; */
+        }
+        /* display: flex;方式  */
+        /* 第一种center */
+
+        /* .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } */
+
+
+        /* 第二种space-around */
+
+        /* .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        } */
+
+        /* 第三种 修改主轴方向 */
+        /* .content {
+            margin: 0 auto;
+        }
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        } */
+
+
+        /* 第四种 */
+        /* 定位+transform */
+        /* .content {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        } */
+
+        /* 第五种 */
+        /* .content {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin:  auto;
+        } */
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content"></div>
+    </div>
+</body>
+</html>

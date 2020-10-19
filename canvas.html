@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <style>
+        body{
+            background-color: #000;
+            text-align: center;
+        }
+        #c1 {
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let oC = document.getElementById('c1');
+            let gd = oC.getContext('2d');
+            let left = 10, top = 50, width = 100, height = 70;
+                        //strokeRect 参数left  top  width  height
+            gd.strokeRect(left, top, width, height);
+            oC.onclick = function(ev) {
+                gd.clearRect(0, 0, oC.width, oC.height);
+                if (ev.offsetX >= left &&
+                    ev.offsetX <= (left + width) &&
+                    ev.offsetY >= top &&
+                    ev.offsetY <= top + height
+                ) {
+                    console.log('方块内, 变红');
+                    gd.strokeStyle = 'red';
+                    gd.strokeRect(left, top, width, height);
+                } else {
+                    console.log('方块外, 变黑');
+                    gd.strokeStyle = 'black';
+                    gd.strokeRect(left, top, width, height);
+                }
+            }
+
+
+
+
+            // 简单的动画  -- 通过擦除重画来实现
+            // let left = 10;
+            // setInterval(function() {
+            //     // 整个画布都清除   left  top  画布的宽、高
+            //     gd.clearRect(0, 0, oC.width, oC.height);
+            //     left++;
+            //     gd.strokeRect(left, 50, 100, 70);
+            // }, 10)
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

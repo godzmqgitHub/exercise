@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body, iframe{
+            height: 100%;
+        }
+        iframe{
+
+        }
+    </style>
+</head>
+<body>
+        <h1>123</h1>
+    <!-- <h1>123</h1>
+    <iframe src="https://app.jiedaibao.com.cn/contract/zhongcaifeiyongtishi.html" width="100%" frameborder="0"></iframe> -->
+    <div class="main_page">
+            <iframe scrolling="no" id="main" name="main" frameborder="0"  src="https://app.jiedaibao.com.cn/contract/zhongcaifeiyongtishi.html" style="min-height:600px;width:100%;height:100%;"></iframe>
+       </div>
+</body>
+<script>
+        // 计算页面的实际高度，iframe自适应会用到
+        function calcPageHeight(doc) {
+            var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
+            var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+            var height  = Math.max(cHeight, sHeight)
+            return height
+        }
+        //根据ID获取iframe对象
+        var ifr = document.getElementById('main')
+        ifr.onload = function() {
+              //解决打开高度太高的页面后再打开高度较小页面滚动条不收缩
+              ifr.style.height='0px';
+            var iDoc = ifr.contentDocument || ifr.document
+            console.log(iDoc);
+            var height = calcPageHeight(iDoc)
+            if(height < 850){
+                height = 850;
+            }
+            ifr.style.height = height + 'px'
+        }
+      </script>
+</html>

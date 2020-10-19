@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call、apply</title>
+</head>
+<body>
+<script>
+    var name = '全局name';
+    var obj = {
+        name: 'obj-name'
+    };
+    function fn(a,b,c) {
+        console.log(this.name);
+        console.log(a,b,c);
+        return '123';
+    }
+
+    
+
+    // let bindFn = fn.bind(obj, 4,5,6);
+    // bindFn(1,2,3)
+    // call\apply
+    // Function.prototype.call_ = function() {
+    //     let argList = Array.from(arguments);
+    //     let obj = argList.shift();
+    //     obj = obj ? Object(obj) : window;
+    //     obj.fn = this;
+    //     obj.fn(...(argList[0]));
+    //     delete obj.fn;
+    // }
+    // fn.call_(null, [1,2,3]);
+
+
+
+        // bind
+        // Function.prototype.bind_ = function() {
+        //     let argList = Array.from(arguments);
+        //     let context = argList.shift();
+        //     context = context? Object(context) : window;
+        //     let that = this;
+        //     return function() {
+        //         that.apply(context, argList)
+        //     }
+        // }
+
+        // let bindFn = fn.bind_(null, 1,2,3)
+        // console.log(bindFn)
+        // bindFn(4,5,6)
+
+        function myFn(name) {
+            this.name = name;
+            this.fn = function() {
+                console.log(this.name);
+            }
+        }
+
+        myFn.prototype.fn1 = function() {
+            console.log(this.name);
+        }
+
+
+        function NewFn() {
+            let argList = Array.from(arguments);
+            let Constructor = argList.shift();
+            let obj = {};
+            obj.__proto__ = Constructor.prototype;
+            let res = Constructor.apply(obj, argList);
+            return res instanceof Object? res: obj;
+        }
+
+        let myNew = NewFn(myFn, 'myNew');
+        myNew.fn()
+        myNew.fn1()
+
+        // console.log(NewFn instanceof Object)
+
+        function myInstanceof(left, right) {
+            let l = left.__proto__;
+            let r = right.prototype;
+            if (left === null || right === null) {
+                return false;
+            }
+            while (true) {
+                if (l === null) {
+                    return false;
+                } else if (l === r) {
+                    return true;
+                }
+                l = l.__proto__;
+            }
+        }
+        console.log(myInstanceof(NewFn, Function))
+
+
+
+
+        // Function.prototype.call_ = function() {
+        //     let argArr = Array.from(arguments);
+        //     let context = argArr.shift();
+        //     context = context ? Object(context) : window;
+        //     context.fn = this;
+        //     let res = context.fn(...argArr);
+        //     delete context.fn;
+        //     return res? res: null;
+        // }
+
+        // console.log(fn.call_(obj,3,4,5));
+
+        // Function.prototype.apply_ = function() {
+        //     let argArr = Array.from(arguments);
+        //     let context = argArr.shift();
+        //     context = context ? Object(context) : window;
+        //     context.fn = this;
+        //     let res = context.fn(...(argArr[0]));
+        //     delete context.fn;
+        //     return res? res: null;
+        // }
+
+        // console.log(fn.apply_(obj,[3,4,5]));
+
+        // Function.prototype.bind_ = function() {
+        //     let argArr = Array.from(arguments);
+        //     let context = argArr.shift();
+        //     context = context ? Object(context) : window;
+        //     context.fn = this;
+        //     return function () {
+        //         let arg = argArr.length ? argArr : Array.from(arguments)
+        //         let res = context.fn(...arg);
+        //         return res? res: null;
+        //     }
+        // }
+
+        // let myBindFn =  fn.bind_(obj);
+        // console.log(myBindFn(4,5,6));
+
+
+        
+
+
+
+</script>
+</body>
+</html>

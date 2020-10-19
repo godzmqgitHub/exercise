@@ -1,0 +1,101 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.assign</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let Obj = function(){
+    //     this.name = 'zhang';
+    //     this.age = 24;
+    // };
+    // Obj.prototype.methodSomething = function() {}
+    // Object.assign(Obj.prototype, {
+    //     methed1: function() {
+    //         console.log('没被替代');
+    //     }
+    // });
+    
+    // let method1 = function() {
+    //     console.log('被替代了');
+    // }
+    // let obj = new Obj();
+    // obj.methed1();
+    // let arr1 = [1,2,3];
+    // let arr2 = [4,5,6];
+    // arr1.push(...arr2);
+    // console.log(arr1);
+    // let fibonacci = n => {
+    //   let a = 0, b = 1, c, d = [0];
+    //   for (let index = 0; index < n; index++) {
+        
+    //     c = a + b;
+    //     a = b, b = c;
+    //     d.push(a);
+    //   }
+    //   console.log(d);
+    //   return a;
+    // }
+    
+    // console.log(fibonacci(1));
+
+
+    person = {
+      name: 'person',
+      getName: function () {
+        console.log(this.name);
+      }
+    }
+    boy = {
+      name: 'twy'
+    };
+    abc = person.getName.bind(boy);
+    abc();
+    console.log(abc);
+    
+</script>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐网站</title>
+    <style>
+        .abc {
+            padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eeeef7;
+    align-content: center;
+    text-align: center;
+    font-size: 14px;
+    line-height: initial;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    padding-right: 5px;
+        }
+    </style>
+   
+</head>
+<body>
+<!-- <ul>
+    <li>欧美
+        <div class="box">1</div>
+    </li>
+    <li>日韩
+        <div class="box">2</div>
+    </li>
+    <li>港台
+        <div class="box">3</div>
+    </li>
+    <li>大陆
+        <div class="box">4</div>
+    </li>
+</ul> -->
+    <div class="abc">即日起至疫情得到有效控制之日，Zoom向中国用户提供不限时长的免费在线视频会议服务，让我们众志成城，战胜病毒！</div>
+</body>
+</html>

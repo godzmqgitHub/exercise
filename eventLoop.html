@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function red() {
+        //     console.log("red");
+        // }
+        // function green() {
+        //     console.log("green");
+        // }
+        // function yellow() {
+        //     console.log("yellow");
+        // }
+        // const light = function (timer, cb) {
+        //     return new Promise(resolve => {
+        //         setTimeout(() => {
+        //             cb()
+        //             resolve()
+        //         }, timer)
+        //     })
+        // }
+        // const step = function () {
+        //     Promise.resolve().then(() => {
+        //         return light(1000, red)
+        //     }).then(() => {
+        //         return light(3000, green)
+        //     }).then(() => {
+        //         return light(2000, yellow)
+        //     }).then(() => {
+        //         return step()
+        //     })
+        // }
+        // step();
+
+        // var consoleFn = function() {
+        //     return new Promise((res) => {
+        //         setTimeout(() => {
+        //             console.log('1,2,3');
+        //             res()
+        //         }, 1000);
+        //     })
+        // }
+        // function xunh() {
+        //     return Promise.resolve().then(() => {
+        //         return consoleFn()
+        //     }).then(() => {
+        //         xunh();
+        //     })
+        // }
+        // xunh()
+
+        const arr = [1, 2, 3]
+        arr.reduce((p, x) => {
+            console.log(p);
+            return p.then(() => {
+                return new Promise(r => {
+                    setTimeout(() => r(console.log(x)), 1000)
+                })
+            })
+        }, Promise.resolve(1))
+        
+    </script>
+</body>
+</html>

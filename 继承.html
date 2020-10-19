@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        /**
+        * 1、原型链继承，把父级的实例赋值给子级的原型
+        * 2、构造继承 通过call在子级构造函数内部添加父级的构造函数
+        * 3、实例继承 子级返回父级的实例
+        * 4、组合继承  组合原型链继承和构造继承
+        * 5、寄生组合继承 通过一个
+        */
+        
+        function Parent(name) {
+            this.book = [1,2,3];
+            this.name = name
+        }
+        Parent.prototype.getName = function () {
+            console.log('Parent');
+        }
+
+
+        // // 原型链继承 父类的方法、属性，所有子类都是共享的
+        // function Child(params) {
+        //     this.name = params;
+        // }
+        // Child.prototype = new Parent();
+        // child = new Child('child');
+        // child.book.push(4);
+        // console.log(child.book);
+
+
+        // // 构造继承 解决了原型链继承的共享父级属性的缺陷，同时可以多继承
+        // // 缺点：最终的实例不是父级的实例，而是子级的实例，同时也不能使用父级原型的方法属性
+        // function Child2(params) {
+        //     this.name = params;
+        //     Parent.call(this);
+        // }
+        // child2 = new Child2();
+        // console.log(child2.getName);
+
+        
+        // 实例继承 不限制调用方式，不管是直接new子类还是直接调用子类都可以实现
+        // 实例都是父级的实例，不支持多继承
+        // function Child3() {
+        //     var instance = new Parent();
+        //     instance.name = 'Child3';
+        //     return instance;
+        // }
+        // child3 = new Child3();
+        // console.log(child3) // Parent {book: Array(3), name: "Child3"}
+        // console.log(child3 instanceof Parent) // true
+        // console.log(child3 instanceof Child3) // false
+
+
+
+        // // 组合继承 可以规避原型继承和构造继承的缺点
+        // // 缺点 调用了两次父级构造函数，同时子类实例将子类原型上的那份屏蔽了
+        // function Child4() {
+        //     Parent.call(this, 'Child5');
+
+        //     this.name = 'child4'
+        // }
+        // Child4.prototype = new Parent('Child5');
+        // // 给子类指定构造函数
+        // Child4.prototype.constructor = Child4;
+        // child4 = new Child4();
+        // console.log(child4); // Child4 {book: Array(3), name: "child4"}
+        // console.log(child4.name); // child4
+        // console.log(child4.__proto__.name); // child5
+
+
+        // 对象的constructor指向他new之前的构造函数
+        // function Child5() {
+        //     // Parent.call(this, 'Child5');
+
+        //     this.name = 'child5'
+        // }
+        // console.log(new Child5().__proto__.constructor);
+
+
+        // 寄生组合继承
+        function Child5() {
+            Parent.call(this, 'Child5');
+            this.name = 'child5'
+        }
+
+        (function() {
+            var Super = function() {}
+            Super.prototype = Parent.prototype;
+            Child5.prototype = new Super();
+        })()
+        Child5.prototype.constructor = Child5
+        var child5 = new Child5();
+        console.log(child5) // Child5{book: Array(3), name: "child5"}
+        console.log(child5.name) // child5
+
+
+        
+    </script>
+</body>
+</html>
