@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input id="text" type="text">
+    <div id="div"></div>
+    <script>
+        let text = document.getElementById('text');
+        let div = document.getElementById('div');
+        let data = {
+            text: ''
+        }
+        text.addEventListener('input', (e) => {
+            data.text = e.target.value;
+        })
+        Object.defineProperty(data, 'text', {
+            get(key) {
+                return value = data[key];
+            },
+            set(newVla) {
+                console.log(newVla);
+                div.innerHTML = newVla;
+            }
+        })
+
+
+        setTimeout(() => {
+            console.log(5);
+        }, 0);
+        new Promise((resolve, reject) => {
+            resolve(1)
+        }).then((res) => {
+            console.log(res);
+            return new Promise((resolve, reject) => {
+                resolve(2)
+            })
+        }).then((res) => {
+            console.log(res);
+            return new Promise((resolve, reject) => {
+                resolve(3)
+            })
+        }).then((res) => {
+            console.log(res);
+            return new Promise((resolve, reject) => {
+                resolve(4)
+            })
+        }).then((res) => {
+            console.log(res);
+        })
+
+
+
+
+    </script>
+</body>
+</html>

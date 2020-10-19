@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>并发控制</title>
+</head>
+<body>
+<script>
+    /**
+     * @params list {Array} - 要迭代的数组
+     * @params limit {Number} - 并发数量控制数
+     * @params asyncHandle {Function} - 对`list`的每⼀个项的处理函数，参数为当前处理项，必须 return ⼀个Promise来确定是
+    否继续进⾏迭代
+    * @return {Promise} - 返回⼀个 Promise 值来确认所有数据是否迭代完成
+    */
+    // let mapLimit = (list, limit, cb) => {
+    //     let listCopy = [].concat(list);
+    //     let asyncList = []; // 正在进⾏的所有并发异步操作
+    //     let recursion = () => {
+    //         return listCopy.shift()().then((res)=>{
+    //                 if (listCopy.length!==0) {
+    //                     recursion(listCopy) // 数组还未迭代完，递归继续进⾏迭代
+    //                 }
+    //                 cb(res);
+    //             })
+    //     };
+
+    //     while(limit--) {
+    //         asyncList.push(recursion());
+    //     }
+        
+    //     // 所有并发异步操作都完成后，本次并发控制迭代完成
+    // }
+
+
+    var dataLists = [];
+    var n = 10;
+    // 通过while模拟异步，push到list中
+    while (n--) {
+        ((n)=> {
+            dataLists.push(()=> {
+                return fn(n)
+            })
+        })(n)
+    }
+    var count = 0;
+    function fn(n) {
+        return new Promise(resolve => {
+            // count++
+            setTimeout(()=>{
+                // count--
+                // console.log(n, '当前并发量:', count)
+                resolve(n);
+            }, Math.random() * 5000)
+        })
+    }
+
+
+    
+
+    /**
+     * 控制异步并发数量
+     * 
+     * 思路：首先将异步项通过promise包装，定义一个函数fn，依次取出异步list，然后执行，通过then在异步回调内递归fn，直到list递归完
+     **/
+    // function mapLimit(list, max, cb) {
+    //     let listCopy = [].concat(list);
+    //     let asyncList = [];
+    //     let fn = () => {
+    //         if (!listCopy.length) {
+    //             return;
+    //         }
+    //         listCopy.shift()().then((res) => {
+    //                 fn();
+    //                 cb(res);
+    //         })
+    //     }
+
+    //     while (max--) {
+    //         fn()
+    //     }
+    // }
+
+   
+
+
+    // function mapLimit(list, max,cb) {
+    //     let listCopy = [].concat(list);
+    //     let asyncList = [];
+    //     let count = 0;
+    //     let fn = () => {
+            
+    //         if (!listCopy.length) {
+    //             return;
+    //         }
+    //         listCopy.shift()().then(() => {
+    //             count--;
+    //             fn()
+    //         })
+    //     }
+
+    //     while (max--) {
+    //         fn()
+    //     }
+    // }
+    mapLimit(dataLists, 3, (res) => {
+        console.log('res', res);
+    })
+    
+
+
+
+    // function mapLimit(list, limit, cb) {
+    //     let arrList = [].concat(list);
+    //     function recursion() {
+            
+            
+            
+    //         count++;
+    //         arrList.shift()().then((res) => {
+    //             count--;
+    //             if (!arrList.length) {
+    //                 return;
+    //             }
+    //             recursion();
+    //             console.log('当前并发量:', count)
+    //             cb(res);
+    //         })
+    //     }
+    //     while (limit--) {
+    //         recursion();
+    //     }
+    // }
+
+
+
+
+    // 一个函数，在异步回调then中递归，然后通过while一次性调用最大异步(limit)次；
+    function mapLimit(list, limit) {
+        if (!list || !list.length || !limit) return;
+        let arrList = [].concat(list);
+        function recursion() {
+            if (!arrList.length) {
+                return;
+            }
+            arrList.shift()().then((res) => {
+                recursion()
+            })
+        }
+        while (limit--) {
+            recursion()
+        }
+    }
+
+
+</script>
+</body>
+</html>
